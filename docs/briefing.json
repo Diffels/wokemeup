@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-20",
+  "generated_at": "2026-11-20T16:39:03Z",
+  "timezone": "Europe/Brussels",
+  "status": "ok",
+  "audio_url": null,
+  "topics": [
+    {
+      "id": "geopolitique",
+      "title": "Géopolitique",
+      "items": []
+    },
+    {
+      "id": "energie",
+      "title": "Énergie",
+      "items": []
+    },
+    {
+      "id": "numerique",
+      "title": "Numérique",
+      "items": []
+    },
+    {
+      "id": "bonne-nouvelle",
+      "title": "Bonne nouvelle du jour",
+      "items": []
+    }
+  ]
+}

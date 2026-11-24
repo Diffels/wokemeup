@@ -1,0 +1,41 @@
+# Topic definitions. Order matters: it is the output order and the
+# first-match order for topic assignment (CLAUDE.md §6.3).
+# Keywords are initial guesses; tune them in M2 with fixtures.
+
+topics:
+  - id: geopolitique
+    title: Géopolitique
+    guardian:
+      sections: [world]
+      keywords: [war, sanctions, diplomacy, NATO, election]
+    lemonde:
+      sections: [international]
+      keywords: [guerre, sanctions, diplomatie, OTAN, élection]
+
+  - id: energie
+    title: Énergie
+    guardian:
+      sections: [business, environment]
+      keywords: [energy, electricity, gas, nuclear, renewables, grid, oil]
+    lemonde:
+      sections: [economie, planete]
+      keywords: [énergie, électricité, gaz, nucléaire, renouvelables, réseau, pétrole]
+
+  - id: numerique
+    title: Numérique
+    guardian:
+      sections: [technology]
+      keywords: [AI, digital, cyber, regulation, telecoms]
+    lemonde:
+      sections: [pixels]
+      keywords: [IA, intelligence artificielle, numérique, cyber, télécoms]
+
+  - id: bonne-nouvelle
+    title: Bonne nouvelle du jour
+    # Best-effort in v1 (CLAUDE.md §14.4).
+    guardian:
+      sections: []
+      keywords: [good news, breakthrough, recovery, record low]
+    lemonde:
+      sections: []
+      keywords: [bonne nouvelle, percée, guérison, record]

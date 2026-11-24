@@ -1,0 +1,24 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Pipeline working files (API caches, intermediate audio)
+.cache/
+work/
+
+# Piper voice models (downloaded at runtime)
+voices/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Claude Code local settings
+.claude/settings.local.json

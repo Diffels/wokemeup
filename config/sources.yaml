@@ -1,0 +1,29 @@
+# Non-secret pipeline configuration. Secrets come from environment variables.
+
+briefing:
+  timezone: Europe/Brussels
+  max_items_per_topic: 4
+  max_age_hours: 24
+
+guardian:
+  endpoint: https://content.guardianapis.com/search
+  api_key_env: GUARDIAN_API_KEY
+  page_size: 50
+  show_fields: headline,trailText,byline
+
+lemonde:
+  # Every URL must be verified to return valid RSS before relying on it (CLAUDE.md §14.1).
+  feeds:
+    - url: https://www.lemonde.fr/rss/une.xml
+      section: une
+      verified: false
+
+llm:
+  provider: anthropic
+  model: claude-haiku-5-5
+  api_key_env: ANTHROPIC_API_KEY
+
+tts:
+  engine: piper
+  # Chosen after a listening test (CLAUDE.md §14.3).
+  voice: null

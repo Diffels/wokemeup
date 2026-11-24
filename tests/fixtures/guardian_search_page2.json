@@ -1,0 +1,31 @@
+{
+  "response": {
+    "status": "ok",
+    "userTier": "developer",
+    "total": 4,
+    "startIndex": 4,
+    "pageSize": 3,
+    "currentPage": 2,
+    "pages": 2,
+    "orderBy": "newest",
+    "results": [
+      {
+        "id": "technology/2026/nov/24/example-ai-regulation-vote",
+        "type": "article",
+        "sectionId": "technology",
+        "sectionName": "Technology",
+        "webPublicationDate": "2026-11-24T09:15:00Z",
+        "webTitle": "Example AI regulation vote passes",
+        "webUrl": "https://www.theguardian.com/technology/2026/nov/24/example-ai-regulation-vote",
+        "apiUrl": "https://content.guardianapis.com/technology/2026/nov/24/example-ai-regulation-vote",
+        "fields": {
+          "headline": "Example AI regulation vote passes",
+          "trailText": "Lawmakers approved the bill by 312 votes to 201"
+        },
+        "isHosted": false,
+        "pillarId": "pillar/news",
+        "pillarName": "News"
+      }
+    ]
+  }
+}

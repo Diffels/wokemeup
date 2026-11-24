@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -40,3 +41,17 @@ def load_config(config_dir: Path = CONFIG_DIR) -> Config:
         raise ValueError(f"config/topics.yaml topic ids must be {TOPIC_ORDER}, got {ids}")
 
     return Config(sources=sources, topics=topics, wake=wake)
+
+
+def load_dotenv(path: Path = REPO_ROOT / ".env") -> None:
+    """Load KEY=VALUE lines from a local .env (gitignored) without overriding the environment."""
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        value = value.strip().strip('"').strip("'")
+        if value:
+            os.environ.setdefault(key.strip(), value)

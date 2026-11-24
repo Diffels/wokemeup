@@ -1,10 +1,12 @@
 import json
 from datetime import datetime, timezone
 
+import pipeline.main
 from pipeline.config import load_config
 from pipeline.main import build_briefing, main
-from pipeline.models import TOPIC_ORDER, Briefing, BriefingItem, Topic
+from pipeline.models import TOPIC_ORDER, Briefing, BriefingItem, NewsItem, Topic
 from pipeline.publish import write_briefing
+from pipeline.sources import SourceResult
 
 
 def test_config_loads_with_topics_in_contract_order() -> None:
@@ -53,7 +55,27 @@ def test_write_briefing_is_valid_utf8_json(tmp_path) -> None:
     assert list(tmp_path.iterdir()) == [path]  # no temp files left behind
 
 
-def test_dry_run_writes_nothing(tmp_path, capsys) -> None:
+def test_dry_run_prints_items_and_writes_nothing(tmp_path, capsys, monkeypatch) -> None:
+    item = NewsItem(
+        title="Exemple de titre",
+        summary="Résumé.",
+        url="https://www.lemonde.fr/x",
+        outlet="Le Monde",
+        published_at=datetime(2026, 11, 24, 18, 0, tzinfo=timezone.utc),
+        section="international",
+    )
+    fake = [SourceResult("The Guardian", error="GUARDIAN_API_KEY is not set"), SourceResult("Le Monde", [item])]
+    monkeypatch.setattr(pipeline.main, "fetch_all", lambda *a, **k: fake)
+
     assert main(["--dry-run", "--docs-dir", str(tmp_path)]) == 0
-    assert json.loads(capsys.readouterr().out)["schema_version"] == 1
+    out = capsys.readouterr().out
+    assert "== The Guardian: FAILED (GUARDIAN_API_KEY is not set)" in out
+    assert "== Le Monde: 1 items" in out
+    assert "2026-11-24 18:00Z  international  Exemple de titre" in out
     assert list(tmp_path.iterdir()) == []
+
+
+def test_dry_run_fails_when_every_source_fails(monkeypatch) -> None:
+    fake = [SourceResult("The Guardian", error="x"), SourceResult("Le Monde", error="y")]
+    monkeypatch.setattr(pipeline.main, "fetch_all", lambda *a, **k: fake)
+    assert main(["--dry-run"]) == 1

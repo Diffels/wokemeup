@@ -10,13 +10,33 @@ guardian:
   api_key_env: GUARDIAN_API_KEY
   page_size: 50
   show_fields: headline,trailText,byline
+  max_pages: 3
+
+http:
+  timeout_seconds: 20
+  retries: 3
+  # Responses are cached in .cache/ (gitignored) to respect rate limits.
+  cache_ttl_minutes: 30
 
 lemonde:
   # Every URL must be verified to return valid RSS before relying on it (CLAUDE.md §14.1).
+  # All verified 2026-11-24: HTTP 200, valid RSS, 16-20 items, same-day dates.
   feeds:
     - url: https://www.lemonde.fr/rss/une.xml
       section: une
-      verified: false
+      verified: true
+    - url: https://www.lemonde.fr/international/rss_full.xml
+      section: international
+      verified: true
+    - url: https://www.lemonde.fr/economie/rss_full.xml
+      section: economie
+      verified: true
+    - url: https://www.lemonde.fr/planete/rss_full.xml
+      section: planete
+      verified: true
+    - url: https://www.lemonde.fr/pixels/rss_full.xml
+      section: pixels
+      verified: true
 
 llm:
   provider: anthropic

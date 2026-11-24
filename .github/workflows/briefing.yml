@@ -2,6 +2,11 @@ name: briefing
 
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Fetch sources and print items only; publish nothing"
+        type: boolean
+        default: false
   # Hourly schedule is enabled in M5 (CLAUDE.md §8.2), once the once-per-day
   # guard and the fallback exist. Until then, run it manually.
   # schedule:
@@ -29,8 +34,9 @@ jobs:
         env:
           GUARDIAN_API_KEY: ${{ secrets.GUARDIAN_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python -m pipeline.main
+        run: python -m pipeline.main ${{ inputs.dry_run && '--dry-run' || '' }}
       - name: Commit docs/
+        if: ${{ !inputs.dry_run }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

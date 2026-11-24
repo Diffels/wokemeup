@@ -66,6 +66,8 @@ iPhone (Shortcuts)
 │   ├── __init__.py
 │   ├── main.py                  # orchestrates all steps; CLI entry point
 │   ├── config.py                # loads config/*.yaml and wake.json
+│   ├── http.py                  # GET with cache, backoff, secret redaction
+│   ├── normalize.py             # HTML stripping, date parsing to UTC
 │   ├── sources/
 │   │   ├── guardian.py
 │   │   └── lemonde_rss.py
@@ -262,7 +264,7 @@ M6 and M7 need a real iPhone to test. Do not mark them done based on simulation.
 
 ## 14. Open items to verify (do not assume)
 
-1. Exact Le Monde feed URLs for international, économie, and any tech section. Verify each returns valid RSS.
+1. ~~Exact Le Monde feed URLs for international, économie, and any tech section.~~ Resolved 2026-11-24: une, international, economie, planete, and pixels feeds verified; recorded in `config/sources.yaml`.
 2. Whether Le Soir offers a usable feed (out of scope until verified).
 3. Chosen Piper French voice, after a listening test.
 4. Guardian keyword/tag combinations that work for the good-news topic.

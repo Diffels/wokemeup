@@ -1,0 +1,62 @@
+{
+  "response": {
+    "status": "ok",
+    "userTier": "developer",
+    "total": 4,
+    "startIndex": 1,
+    "pageSize": 3,
+    "currentPage": 1,
+    "pages": 2,
+    "orderBy": "newest",
+    "results": [
+      {
+        "id": "world/2026/nov/24/example-ceasefire-talks",
+        "type": "article",
+        "sectionId": "world",
+        "sectionName": "World news",
+        "webPublicationDate": "2026-11-24T19:02:11Z",
+        "webTitle": "Example ceasefire talks resume in Geneva",
+        "webUrl": "https://www.theguardian.com/world/2026/nov/24/example-ceasefire-talks",
+        "apiUrl": "https://content.guardianapis.com/world/2026/nov/24/example-ceasefire-talks",
+        "fields": {
+          "headline": "Example ceasefire talks resume in Geneva",
+          "trailText": "<p>Delegations from <strong>both sides</strong> met for a second day &amp; agreed on a timetable</p>",
+          "byline": "Test Reporter"
+        },
+        "isHosted": false,
+        "pillarId": "pillar/news",
+        "pillarName": "News"
+      },
+      {
+        "id": "business/live/2026/nov/24/example-energy-prices-live",
+        "type": "liveblog",
+        "sectionId": "business",
+        "sectionName": "Business",
+        "webPublicationDate": "2026-11-24T17:30:00Z",
+        "webTitle": "Example energy prices – live",
+        "webUrl": "https://www.theguardian.com/business/live/2026/nov/24/example-energy-prices-live",
+        "apiUrl": "https://content.guardianapis.com/business/live/2026/nov/24/example-energy-prices-live",
+        "fields": {
+          "trailText": "Wholesale gas prices fell 4% after a mild forecast"
+        },
+        "isHosted": false,
+        "pillarId": "pillar/news",
+        "pillarName": "News"
+      },
+      {
+        "id": "technology/interactive/2026/nov/24/example-quiz",
+        "type": "interactive",
+        "sectionId": "technology",
+        "sectionName": "Technology",
+        "webPublicationDate": "2026-11-24T12:00:00Z",
+        "webTitle": "Example tech quiz",
+        "webUrl": "https://www.theguardian.com/technology/interactive/2026/nov/24/example-quiz",
+        "apiUrl": "https://content.guardianapis.com/technology/interactive/2026/nov/24/example-quiz",
+        "fields": {"headline": "Example tech quiz"},
+        "isHosted": false,
+        "pillarId": "pillar/news",
+        "pillarName": "News"
+      }
+    ]
+  }
+}
